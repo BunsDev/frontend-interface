@@ -20,7 +20,7 @@ export const Cell = styled.div<{ variant?: string | boolean }>`
 	height: 2px;
 	border-radius: 9px;
 	width: 13px;
-	background-color: ${({ theme, variant }) => (variant ? theme[variant] : "#D3D6E8")};
+	background-color: ${({ theme, variant }) => ("#D3D6E8")};
 
 	&:not(:last-child) {
 		width: 17px;

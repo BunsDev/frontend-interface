@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import PlatformLogo from "../../../components/Logo/PlatformLogo";
 import { sortedData } from "../../../lib/helper";
@@ -34,7 +36,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 	});
 	// const [pools, setPools] = useState([]);
 	const pools = useSelector((state: AppState) => state.pools);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const [seeMore, setSeeMore] = useState(false);
 	const [shownListLength, setShownListLength] = useState(0);
 
@@ -42,6 +44,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 		if (query.length === 0) {
 			return pools;
 		} else {
+			/* @ts-ignore */
 			return pools.filter((pool) => JSON.stringify(pool).toLowerCase().includes(query.toLowerCase()));
 		}
 	}, [query, pools]);
@@ -57,6 +60,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 	}, [filteredPools, sort]);
 
 	const balances = usePoolsBalances(
+		/* @ts-ignore */
 		account,
 		filteredPools.map((pool: any) => pool.id || pool.address),
 		type
@@ -70,6 +74,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			page: page,
 		});
 		if (res) {
+			/* @ts-ignore */
 			setPools((pools) => pools.concat(res));
 		}
 	};
@@ -96,6 +101,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 	}, []);
 
 	useEffect(() => {
+		/* @ts-ignore */
 		if (shownListLength < virtualPage * 10 && !props.pools[type].isFinished) {
 			setPage((page) => page + 1);
 		}
@@ -109,6 +115,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 				return ln;
 			});
 			setSeeMore(false);
+			/* @ts-ignore */
 			if (((vp + 1) % 20 === 0 && !props.pools[type].isFinished) || listLength < vp * 10) {
 				setPage((p) => p + 1);
 			}
@@ -127,6 +134,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 				setSeeMore(true);
 				return vp;
 			} else {
+				/* @ts-ignore */
 				if (((vp + 1) % 20 === 0 && !props.pools[type].isFinished) || listLength < vp * 10) {
 					setPage((p) => p + 1);
 				}
@@ -134,14 +142,14 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			}
 		});
 	};
-
+/* @ts-ignore */
 	const handleObserver = (entities) => {
 		const target = entities[0];
 		if (target.isIntersecting) {
 			observeAction();
 		}
 	};
-
+/* @ts-ignore */
 	const onTableChange = (type, context) => {
 		if (type === "sort") {
 			setSort({
@@ -156,6 +164,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "id",
 				text: "ID",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => (
 					<span className="fw-bold d-block">{rowIndex + 1}</span>
 				),
@@ -163,6 +172,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "poolName",
 				text: t("pools.availablePools"),
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => {
 					return (
 						<div
@@ -183,6 +193,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "totalSupply",
 				text: t("pools.totalSupply"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.totalSupply} />
@@ -193,6 +204,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "volumeUSD",
 				text: t("pools.volume"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.volumeUSD} />
@@ -203,12 +215,14 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "txCount",
 				text: t("pools.txnCount"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => <Styled.Text>{row.txCount}</Styled.Text>,
 				sort: true,
 			},
 			{
 				dataField: "actions",
 				text: "",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex, { addLiquidityDialog, balances, removeLiquidityDialog }) => {
 					const pool = {
 						poolName: `${row.token0?.symbol}-${row.token1?.symbol}`,
@@ -243,6 +257,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "id",
 				text: "ID",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => (
 					<span className="fw-bold d-block">{rowIndex + 1}</span>
 				),
@@ -250,6 +265,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "poolName",
 				text: t("pools.availablePools"),
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => {
 					return (
 						<div
@@ -258,6 +274,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 						>
 							<PlatformLogo size={32} platform={"balancer"} name={"balancer"} />
 							<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
+							{/* @ts-ignore */}
 								<Styled.CustomTitle>{row.tokens.map((t) => t.symbol).join("-")}</Styled.CustomTitle>
 								<Styled.PlatformName>Balancer</Styled.PlatformName>
 							</div>
@@ -268,6 +285,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "liquidity",
 				text: t("pools.liquidity"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.liquidity} />
@@ -278,6 +296,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "totalSwapVolume",
 				text: t("pools.totalSwapVolume"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.totalSwapVolume} />
@@ -288,14 +307,17 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "swapFee",
 				text: t("pools.swapFee"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => <Styled.Text>{row.swapFee}</Styled.Text>,
 				sort: true,
 			},
 			{
 				dataField: "actions",
 				text: "",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex, { addLiquidityDialog, balances, removeLiquidityDialog }) => {
 					const pool = {
+						/* @ts-ignore */
 						poolName: row.tokens.map((t) => t.symbol).join("-"),
 						address: row.id,
 					};
@@ -326,6 +348,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "id",
 				text: "ID",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => (
 					<span className="fw-bold d-block">{rowIndex + 1}</span>
 				),
@@ -333,6 +356,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "poolName",
 				text: t("pools.availablePools"),
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => {
 					return (
 						<div
@@ -345,6 +369,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 									{row.poolToken
 										? row.poolToken.name
 										: row.coins?.length > 0
+										/* @ts-ignore */
 										? row.coins?.map((c) => c.symbol).join("-")
 										: shorten(row.address, "name")}
 								</Styled.CustomTitle>
@@ -357,6 +382,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "virtualPrice",
 				text: t("pools.virtualPrice"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.virtualPrice} />
@@ -367,17 +393,20 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "fee",
 				text: t("pools.fee"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => <Styled.Text>{row.fee}</Styled.Text>,
 				sort: true,
 			},
 			{
 				dataField: "actions",
 				text: "",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex, { addLiquidityDialog, balances, removeLiquidityDialog }) => {
 					const pool = {
 						poolName: row.poolToken
 							? row.poolToken.name
 							: row.coins?.length > 0
+							/* @ts-ignore */
 							? row.coins?.map((c) => c.symbol).join("-")
 							: shorten(row.address, "name"),
 						address: row.address,
@@ -409,6 +438,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "id",
 				text: "ID",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => (
 					<span className="fw-bold d-block">{rowIndex + 1}</span>
 				),
@@ -416,6 +446,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "poolName",
 				text: t("pools.availablePools"),
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex) => {
 					return (
 						<div
@@ -436,6 +467,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "totalSupply",
 				text: t("pools.totalSupply"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => (
 					<Styled.Text>
 						<CurrencyText value={row.totalSupply} />
@@ -446,18 +478,21 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 			{
 				dataField: "available",
 				text: t("pools.totalSupply"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => <Styled.Text>{Number(row.available).toFixed(6)}</Styled.Text>,
 				sort: true,
 			},
 			{
 				dataField: "vaultBalance",
 				text: t("pools.vaultBalance"),
+				/* @ts-ignore */
 				formatter: (cellContent, row) => <Styled.Text>{Number(row.vaultBalance).toFixed(6)}</Styled.Text>,
 				sort: true,
 			},
 			{
 				dataField: "actions",
 				text: "",
+				/* @ts-ignore */
 				formatter: (cellContent, row, rowIndex, { addLiquidityDialog, balances, removeLiquidityDialog }) => {
 					const pool = {
 						poolName: row.shareToken ? row.shareToken.name : row.underlyingToken.name,
@@ -490,11 +525,15 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 
 	return (
 		<>
+		{/* @ts-ignore */}
 			{(!props.pools[type].loading || pools.length > 1) && (
+				/* @ts-ignore */
 				<PoolsTable entities={sortedPools} columns={columns[type]} onTableChange={onTableChange} />
 			)}
+			{/* @ts-ignore */}
 			{props.pools[type].isFinished && filteredPools.length === 0 && (
 				<div className="d-flex flex-column align-items-center justify-content-center py-8 px-4">
+					{/* @ts-ignore */}
 					<ExchangeIcon size={48} fill={"#6993FF"} />
 					<h5 className="text-primary fw-bolder mb-3 mt-5">
 						There is no <strong>Pool</strong> in <strong>{type}</strong> platform
@@ -503,6 +542,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 				</div>
 			)}
 			<div className="d-flex align-items-center justify-content-center" ref={loader}>
+			{/* @ts-ignore */}
 				{!props.pools[type].isFinished || (filteredPools.length === 0 && page > 1) ? (
 					seeMore ? (
 						<div className="py-4">

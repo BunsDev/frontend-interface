@@ -24,7 +24,7 @@ const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
 
 const AnimatedDialogContent = animated(DialogContent);
 // destructure to not pass custom props to Dialog DOM element
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @ts-ignore
 const StyledDialogContent = styled(({ minHeight, maxHeight, mobile, isOpen, maxWidth, ...rest }) => (
 	<AnimatedDialogContent {...rest} />
 )).attrs({
@@ -97,6 +97,7 @@ export default function Modal({
 	initialFocusRef,
 	children,
 }: ModalProps) {
+	/* @ts-ignore */
 	const fadeTransition = useTransition(isOpen, null, {
 		config: { duration: 200 },
 		from: { opacity: 0 },
@@ -119,6 +120,7 @@ export default function Modal({
 	return (
 		<>
 			{fadeTransition.map(
+				/* @ts-ignore */
 				({ item, key, props }) =>
 					item && (
 						<StyledDialogOverlay

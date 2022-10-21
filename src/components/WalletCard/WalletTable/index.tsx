@@ -17,6 +17,7 @@ const WalletTable = ({ query = "" }: WalletTableProps) => {
 	const overview = useSelector((state: AppState) => state.balances.overview);
 	const balances = useSelector((state: AppState) => state.balances.data);
 	const loading = useSelector((state: AppState) => state.balances.loading);
+	// @ts-ignore
 	const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
 	const walletBalances = useMemoTokenBalances();
 
@@ -36,6 +37,7 @@ const WalletTable = ({ query = "" }: WalletTableProps) => {
 			return tokensData;
 		} else {
 			const lowerQuery = query.toLowerCase();
+			// @ts-ignore
 			return tokensData.filter((token) => JSON.stringify(token.metadata).toLowerCase().includes(lowerQuery));
 		}
 	}, [overview.wallet.balances, query]);

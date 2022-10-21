@@ -11,6 +11,7 @@ import * as Styled from "./styleds";
 export const AssetModal = () => {
 	const history = useHistory();
 	const overview = useSelector((state: AppState) => state.balances.overview);
+	// @ts-ignore
 	const { asset } = useParams();
 
 	const onHide = () => history.push(ROUTE_DASHBOARD);

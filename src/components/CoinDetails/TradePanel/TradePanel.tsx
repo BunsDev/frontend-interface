@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // import Web3 from "web3";
 // import { Web3Wrapper } from "@0x/web3-wrapper";
 // import { ERC20TokenContract } from "@0x/contract-wrappers";

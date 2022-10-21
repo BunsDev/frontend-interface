@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { HTMLProps, useCallback } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { darken } from "polished";
-import { ArrowLeft, X, Trash, ExternalLink as LinkIconFeather } from "react-feather";
+import { ArrowLeft, Trash, ExternalLink as LinkIconFeather } from "react-feather";
 
 export const ButtonText = styled.button`
 	outline: none;

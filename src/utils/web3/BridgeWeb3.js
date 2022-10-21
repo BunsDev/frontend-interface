@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import getNetConfig from '../../config'
 import ERC20_ABI from '../../constants/abis/erc20.json'
 

@@ -17,7 +17,7 @@ export function getWeb3ConTract (ABI, ContractAddress) {
 
 
 export function getWeb3BaseInfo (ContractAddress, input, address, value) {
-  let walletType = sessionStorage.getItem('walletType')
+  // let walletType = sessionStorage.getItem('walletType')
   let HDPath = sessionStorage.getItem('HDPath')
   let data = {
     chainId: web3Fn.utils.toHex(CHAINID),

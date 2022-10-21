@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback } from "react";
 import { FixedSizeList } from "react-window";
 import { ETHER, Token } from "@uniswap/sdk";
@@ -40,11 +43,13 @@ const CurrencyList = ({
 
 			const urlAdded = urlAddedTokens && urlAddedTokens.hasOwnProperty(address);
 			const customAdded =
-				address !== config.symbol &&
-				INITIAL_TOKENS_CONTEXT[chainId] &&
-				!INITIAL_TOKENS_CONTEXT[chainId].hasOwnProperty(address) &&
-				!urlAdded;
-
+			// @ts-ignore
+			address !== config.symbol &&
+			INITIAL_TOKENS_CONTEXT[chainId] &&
+			!INITIAL_TOKENS_CONTEXT[chainId].hasOwnProperty(address) &&
+			!urlAdded;
+			
+			// @ts-ignore
 			if (!showETH && address === config.symbol) {
 				return null;
 			}

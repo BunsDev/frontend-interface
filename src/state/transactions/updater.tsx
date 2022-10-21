@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useActiveWeb3React } from "../../hooks";
@@ -52,6 +54,7 @@ export default function Updater(): null {
 						if (receipt) {
 							dispatch(
 								finalizeTransaction({
+									/* @ts-ignore */
 									chainId,
 									hash,
 									receipt: {
@@ -65,22 +68,23 @@ export default function Updater(): null {
 										transactionIndex: receipt.transactionIndex,
 									},
 								})
-							);
-
-							emitter.emit("transaction", {
-								txn: {
-									hash,
-									success: receipt.status === 1,
-									summary: transactions[hash]?.summary,
-								},
-								message: transactions[hash]?.summary,
-							});
-						} else {
-							dispatch(checkedTransaction({ chainId, hash, blockNumber: lastBlockNumber }));
-						}
-					})
-					.catch((error) => {
-						console.error(`failed to check transaction hash: ${hash}`, error);
+								);
+								
+								emitter.emit("transaction", {
+									txn: {
+										hash,
+										success: receipt.status === 1,
+										summary: transactions[hash]?.summary,
+									},
+									message: transactions[hash]?.summary,
+								});
+							} else {
+								/* @ts-ignore */
+								dispatch(checkedTransaction({ chainId, hash, blockNumber: lastBlockNumber }));
+							}
+						})
+						.catch((error) => {
+							console.error(`failed to check transaction hash: ${hash}`, error);
 					});
 			});
 	}, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup]);

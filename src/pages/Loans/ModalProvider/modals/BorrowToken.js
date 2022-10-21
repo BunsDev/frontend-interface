@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ConfirmationPendingContent } from "../../../../components/TransactionConfirmationModal";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";

@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CSVLink } from "react-csv";
+// import { CSVLink } from "react-csv";
 import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
@@ -119,7 +119,7 @@ const TransactionHistory = () => {
 		setSections((prevSections) => {
 			return [...prevSections, ...newSections];
 		});
-		setTransactions(transactions.concat(txnRes.data.result, erc20Res.data.result));
+		// setTransactions(transactions.concat(txnRes.data.result, erc20Res.data.result));
 		setLoading(false);
 	};
 
@@ -127,7 +127,7 @@ const TransactionHistory = () => {
 		<>
 			<div className="d-flex align-items-center justify-content-between mb-4">
 				<h2>{t("history")}</h2>
-				{account && transactions && (
+				{/* {account && transactions && (
 					<Button
 						as={CSVLink}
 						variant={"outline-primary"}
@@ -136,7 +136,7 @@ const TransactionHistory = () => {
 					>
 						{t("download", { file: "CSV" })}
 					</Button>
-				)}
+				)} */}
 			</div>
 
 			{account ? (

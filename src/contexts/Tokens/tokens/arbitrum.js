@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {ARBITRUM_TEST_CHAINID} from '../../../config/coinbase/nodeConfig'
 import {
   NAME,

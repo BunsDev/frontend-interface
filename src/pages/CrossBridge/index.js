@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from "styled-components";
 import { Row, Col, Button as BS, ListGroup } from "react-bootstrap";
 import SVG from "react-inlinesvg";

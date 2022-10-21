@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ConfirmationPendingContent } from "../../../../components/TransactionConfirmationModal";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
